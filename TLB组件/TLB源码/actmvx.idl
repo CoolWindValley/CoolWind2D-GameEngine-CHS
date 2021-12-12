@@ -1,0 +1,1459 @@
+// Generated .IDL file (by the OLE/COM Object Viewer)
+// 
+// typelib filename: quartz.dll
+
+[
+	uuid(CEBCFDD2-7E44-4E5E-99CF-4BA6262D77B8),
+	version(1.0),
+	helpstring("ActiveMovie extends type library")
+]
+library ActiveMovieEx
+{
+	// TLib : OLE Automation : {00020430-0000-0000-C000-000000000046}
+	importlib("stdole2.tlb");
+
+	// Forward declare all types defined in this typelib
+	interface IAMCollection;
+	interface IMediaControl;
+	interface IMediaEvent;
+	interface IMediaEventEx;
+	interface IMediaPosition;
+	interface IBasicAudio;
+	interface IVideoWindow;
+	interface IBasicVideo;
+	interface IBasicVideo2;
+	interface IDeferredCommand;
+	interface IQueueCommand;
+	interface IFilterInfo;
+	interface IRegFilterInfo;
+	interface IMediaTypeInfo;
+	interface IPinInfo;
+	interface IAMStats;
+	interface IReferenceClock;
+	interface IMediaFilter;
+	interface IBaseFilter;
+	interface IPin;
+	interface IFilterGraph;
+	interface IDirectSoundFXGargle;
+	interface IDirectSoundFXChorus;
+	interface IDirectSoundFXFlanger;
+	interface IDirectSoundFXEcho;
+	interface IDirectSoundFXDistortion;
+	interface IDirectSoundFXCompressor;
+	interface IDirectSoundFXParamEq;
+	interface IDirectSoundFXWavesReverb;
+	interface IDirectSoundFXI3DL2Reverb;
+	interface IDirectSoundCaptureFXAec;
+	interface IDirectSoundCaptureFXNoiseSuppress;
+	interface IDirectSound3DListener;
+	interface IDirectSound3DBuffer;
+
+	typedef [public,
+		custom(F914481D-9C62-4B43-9340-E9B2E6252E5F, 1)
+	] long LONG_PTR;
+
+	typedef [public] CURRENCY REFERENCE_TIME;
+	typedef [public] double REFTIME;
+	typedef LONG_PTR HSEMAPHORE;
+	typedef LONG_PTR HEVENT;
+	
+	typedef enum BoolAPI
+	{
+		FalseAPI,
+		TrueAPI,
+	} BOOL_API;
+	
+	typedef enum FilterState
+	{
+		State_Stopped,
+		State_Paused,
+		State_Running,
+	} FILTER_STATE;
+
+	typedef enum PinDirection
+	{
+		PINDIR_INPUT,
+		PINDIR_OUTPUT,
+	} PIN_DIRECTION;
+
+	typedef enum DSBalance
+	{
+		DSBPAN_LEFT                = -10000,
+		DSBPAN_CENTER              = 0,
+		DSBPAN_RIGHT               = 10000,
+	} DS_PAN;
+
+	typedef enum DSVolume
+	{
+		DSBVOLUME_MIN              = -10000,
+		DSBVOLUME_MAX              = 0,
+	} DS_VOLUME;
+
+	typedef enum DSFXGargleRateHz
+	{
+		DSFXGARGLE_RATEHZ_MIN          = 1,
+		DSFXGARGLE_RATEHZ_MAX          = 1000,
+	} DSFXGARGLE_RATEHZ;
+
+	typedef enum DSFXGargleWaveShape
+	{
+		DSFXGARGLE_WAVE_TRIANGLE,
+		DSFXGARGLE_WAVE_SQUARE,
+	} DSFXGARGLE_WAVESHAPE;
+
+	typedef enum DSFXChorusWaveform
+	{
+		DSFXCHORUS_WAVE_TRIANGLE,
+		DSFXCHORUS_WAVE_SIN,
+	} DSFXCHORUS_WAVEFORM;
+
+	typedef enum DSFXChorusPhase
+	{
+		DSFXCHORUS_PHASE_NEG_180,
+		DSFXCHORUS_PHASE_NEG_90,
+		DSFXCHORUS_PHASE_ZERO,
+		DSFXCHORUS_PHASE_90,
+		DSFXCHORUS_PHASE_180,
+
+		DSFXCHORUS_PHASE_MIN           = 0,
+		DSFXCHORUS_PHASE_MAX           = 4,
+	} DSFXCHORUS_PHASE;
+
+	typedef enum DSFXFlangerWaveform
+	{
+		DSFXFLANGER_WAVE_TRIANGLE,
+		DSFXFLANGER_WAVE_SIN,
+	} DSFXFLANGER_WAVEFORM;
+
+	typedef enum DSFXFlangerPhase
+	{
+		DSFXFLANGER_PHASE_NEG_180,
+		DSFXFLANGER_PHASE_NEG_90,
+		DSFXFLANGER_PHASE_ZERO,
+		DSFXFLANGER_PHASE_90,
+		DSFXFLANGER_PHASE_180,
+
+		DSFXFLANGER_PHASE_MIN           = 0,
+		DSFXFLANGER_PHASE_MAX           = 4,
+	} DSFXFLANGER_PHASE;
+
+	typedef enum DSFXEchoPanDelay
+	{
+		DSFXECHO_PANDELAY_MIN,
+		DSFXECHO_PANDELAY_MAX,
+	} DSFXECHO_PANDELAY;
+
+	typedef enum DSFXI3DL2EnvironmentPreset
+	{
+		DSFX_I3DL2_ENVIRONMENT_PRESET_DEFAULT,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_GENERIC,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_PADDEDCELL,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_ROOM,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_BATHROOM,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_LIVINGROOM,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_STONEROOM,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_AUDITORIUM,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_CONCERTHALL,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_CAVE,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_ARENA,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_HANGAR,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_CARPETEDHALLWAY,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_HALLWAY,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_STONECORRIDOR,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_ALLEY,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_FOREST,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_CITY,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_MOUNTAINS,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_QUARRY,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_PLAIN,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_PARKINGLOT,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_SEWERPIPE,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_UNDERWATER,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_SMALLROOM,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_MEDIUMROOM,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_LARGEROOM,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_MEDIUMHALL,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_LARGEHALL,
+		DSFX_I3DL2_ENVIRONMENT_PRESET_PLATE,
+	} DSFX_I3DL2_ENVIRONMENT_PRESET;
+
+	typedef enum DSFXI3DL2ReverbQuality
+	{
+		DSFX_I3DL2REVERB_QUALITY_MIN               = 0,
+		DSFX_I3DL2REVERB_QUALITY_MAX               = 3,
+		DSFX_I3DL2REVERB_QUALITY_DEFAULT           = 2,
+	} DSFX_I3DL2REVERB_QUALITY;
+
+	typedef enum DSFXAecMode
+	{
+		DSCFX_AEC_MODE_PASS_THROUGH,
+		DSCFX_AEC_MODE_HALF_DUPLEX,
+		DSCFX_AEC_MODE_FULL_DUPLEX,
+	} DSCFX_AEC_MODE;
+
+	typedef enum DSFXAecStatus
+	{
+		DSCFX_AEC_STATUS_HISTORY_UNINITIALIZED         = 0x0,
+		DSCFX_AEC_STATUS_HISTORY_CONTINUOUSLY_CONVERGED= 0x1,
+		DSCFX_AEC_STATUS_HISTORY_PREVIOUSLY_DIVERGED   = 0x2,
+		DSCFX_AEC_STATUS_CURRENTLY_CONVERGED           = 0x8,
+	} DSCFX_AEC_STATUS;
+
+	typedef struct UUID
+	{
+		long  Data1;
+		short Data2;
+		short Data3;
+		byte  Data4[8];
+	} UUID, GUID, CLSID, IID;
+
+	typedef enum DS3DMode
+	{
+		DS3DMODE_NORMAL,
+		DS3DMODE_HEADRELATIVE,
+		DS3DMODE_DISABLE,
+	} DS3D_MODE;
+
+	typedef enum DS3DConeAngle
+	{
+		DS3D_MINCONEANGLE          = 0,
+		DS3D_MAXCONEANGLE          = 360,
+		DS3D_DEFAULTCONEANGLE      = 360,
+	} DS3D_CONEANGLE;
+
+	typedef enum DS3DApply
+	{
+		DS3D_IMMEDIATE,
+		DS3D_DEFERRED,
+	} DS3D_APPLY;
+
+	typedef struct FilterInfo
+	{
+		short achName[128];
+		IFilterGraph *pGraph;
+	} FILTER_INFO;
+
+	typedef struct PinInfo
+	{
+		IBaseFilter *pFilter;
+		PIN_DIRECTION dir;
+		WCHAR achName[128];
+	} PIN_INFO;
+
+	typedef struct D3DVECTOR
+	{
+		float X;
+		float Y;
+		float Z;
+	} D3DVECTOR;
+
+	typedef struct DSFXGargle
+	{
+		[helpstring("Rate of modulation in hz")]
+		DSFXGARGLE_RATEHZ       dwRateHz;
+		DSFXGARGLE_WAVESHAPE       dwWaveShape;
+	} DSFXGargle;
+
+	typedef struct DSFXChorus
+	{
+		[helpstring("[0.0, 100.0]")]
+		float       fWetDryMix;
+		[helpstring("[0.0, 100.0]")]
+		float       fDepth;
+		[helpstring("[-99.0, 99.0]")]
+		float       fFeedback;
+		[helpstring("[0.0, 10.0]")]
+		float       fFrequency;
+		DSFXCHORUS_WAVEFORM        lWaveform;
+		[helpstring("[0.0, 20.0]")]
+		float       fDelay;
+		DSFXCHORUS_PHASE        lPhase;
+	} DSFXChorus;
+
+	typedef struct DSFXFlanger
+	{
+		[helpstring("[0.0, 100.0]")]
+		float       fWetDryMix;
+		[helpstring("[0.0, 100.0]")]
+		float       fDepth;
+		[helpstring("[-99.0, 99.0]")]
+		float       fFeedback;
+		[helpstring("[0.0, 10.0]")]
+		float       fFrequency;
+		DSFXFLANGER_WAVEFORM        lWaveform;
+		[helpstring("[0.0, 4.0]")]
+		float       fDelay;
+		DSFXFLANGER_PHASE        lPhase;
+	} DSFXFlanger;
+
+	typedef struct DSFXEcho
+	{
+		[helpstring("[0.0, 100.0]")]
+		float   fWetDryMix;
+		[helpstring("[0.0, 100.0]")]
+		float   fFeedback;
+		[helpstring("[1.0, 2000.0]")]
+		float   fLeftDelay;
+		[helpstring("[1.0, 2000.0]")]
+		float   fRightDelay;
+		DSFXECHO_PANDELAY    lPanDelay;
+	} DSFXEcho;
+
+	typedef struct DSFXDistortion
+	{
+		[helpstring("[-60.0, 0.0]")]
+		float   fGain;
+		[helpstring("[0.0, 100.0]")]
+		float   fEdge;
+		[helpstring("[100.0, 8000.0]")]
+		float   fPostEQCenterFrequency;
+		[helpstring("[100.0, 8000.0]")]
+		float   fPostEQBandwidth;
+		[helpstring("[100.0, 8000.0]")]
+		float   fPreLowpassCutoff;
+	} DSFXDistortion;
+
+	typedef struct DSFXCompressor
+	{
+		[helpstring("[-60.0, 60.0]")]
+		float   fGain;
+		[helpstring("[0.01, 500.0]")]
+		float   fAttack;
+		[helpstring("[50.0, 3000.0]")]
+		float   fRelease;
+		[helpstring("[-60.0, 60.0]")]
+		float   fThreshold;
+		[helpstring("[1.0, 100.0]")]
+		float   fRatio;
+		[helpstring("[0.0, 4.0]")]
+		float   fPredelay;
+	} DSFXCompressor;
+
+	typedef struct DSFXParamEq
+	{
+		[helpstring("[80.0, 16000.0]")]
+		float   fCenter;
+		[helpstring("[1.0, 36.0]")]
+		float   fBandwidth;
+		[helpstring("[-15.0, 15.0]")]
+		float   fGain;
+	} DSFXParamEq;
+
+	typedef struct DSFXI3DL2Reverb
+	{
+		[helpstring("[-10000, 0]      default: -1000 mB")]
+		long    lRoom;
+		[helpstring("[-10000, 0]      default: 0 mB")]
+		long    lRoomHF;
+		[helpstring("[0.0, 10.0]      default: 0.0")]
+		float   flRoomRolloffFactor;
+		[helpstring("[0.1, 20.0]      default: 1.49s")]
+		float   flDecayTime;
+		[helpstring("[0.1, 2.0]       default: 0.83")]
+		float   flDecayHFRatio;
+		[helpstring("[-10000, 1000]   default: -2602 mB")]
+		long    lReflections;
+		[helpstring("[0.0, 0.3]       default: 0.007 s")]
+		float   flReflectionsDelay;
+		[helpstring("[-10000, 2000]   default: 200 mB")]
+		long    lReverb;
+		[helpstring("[0.0, 0.1]       default: 0.011 s")]
+		float   flReverbDelay;
+		[helpstring("[0.0, 100.0]     default: 100.0 %")]
+		float   flDiffusion;
+		[helpstring("[0.0, 100.0]     default: 100.0 %")]
+		float   flDensity;
+		[helpstring("[20.0, 20000.0]  default: 5000.0 Hz")]
+		float   flHFReference;
+	} DSFXI3DL2Reverb;
+
+	typedef struct DSFXWavesReverb
+	{
+		[helpstring("[-96.0,0.0]            default: 0.0 dB")]
+		float   fInGain;
+		[helpstring("[-96.0,0.0]            default: 0.0 db")]
+		float   fReverbMix;
+		[helpstring("[0.001,3000.0]         default: 1000.0 ms")]
+		float   fReverbTime;
+		[helpstring("[0.001,0.999]          default: 0.001")]
+		float   fHighFreqRTRatio;
+	} DSFXWavesReverb;
+
+	typedef struct DSCFXAec
+	{
+		BOOL_API    fEnable;
+		BOOL_API    fNoiseFill;
+		DSCFX_AEC_MODE   dwMode;
+	} DSCFXAec;
+
+	typedef struct DSCFXNoiseSuppress
+	{
+		BOOL_API    fEnable;
+	} DSCFXNoiseSuppress;
+
+	typedef struct DS3DBUFFER
+	{
+		long           dwSize;
+		D3DVECTOR       vPosition;
+		D3DVECTOR       vVelocity;
+		DS3D_CONEANGLE           dwInsideConeAngle;
+		DS3D_CONEANGLE           dwOutsideConeAngle;
+		D3DVECTOR       vConeOrientation;
+		long            lConeOutsideVolume;
+		float        flMinDistance;
+		float        flMaxDistance;
+		DS3D_MODE           dwMode;
+	} DS3DBUFFER;
+
+	typedef struct DS3DLISTENER
+	{
+		long           dwSize;
+		D3DVECTOR       vPosition;
+		D3DVECTOR       vVelocity;
+		D3DVECTOR       vOrientFront;
+		D3DVECTOR       vOrientTop;
+		float        flDistanceFactor;
+		float        flRolloffFactor;
+		float        flDopplerFactor;
+	} DS3DLISTENER;
+
+	[
+		odl,
+		uuid(56A868B9-0AD4-11CE-B03A-0020AF0BA770),
+		helpstring("Collection"),
+		dual,
+		oleautomation
+	]
+	interface IAMCollection : IDispatch {
+		[id(0x60020000), propget]
+		HRESULT Count([out, retval] long* plCount);
+		[id(0x60020001)]
+		HRESULT Item(
+			[in] long lItem,
+			[retval][out] IUnknown** ppUnk);
+		[id(0x60020002), propget]
+		HRESULT NewEnum([out, retval] IUnknown** ppUnk);
+	};
+
+	[
+		odl,
+		uuid(56A868B1-0AD4-11CE-B03A-0020AF0BA770),
+		helpstring("IMediaControl interface"),
+		dual,
+		oleautomation
+	]
+	interface IMediaControl : IDispatch {
+		[id(0x60020000)]
+		HRESULT Run();
+		[id(0x60020001)]
+		HRESULT Pause();
+		[id(0x60020002)]
+		HRESULT Stop();
+		[propget][id(0x60020003)]
+		HRESULT GetState(
+			[in][optional] long msTimeout,
+			[retval][out] FILTER_STATE* pfs);
+		[id(0x60020004)]
+		HRESULT RenderFile([in] BSTR strFilename);
+		[id(0x60020005)]
+		HRESULT AddSourceFilter(
+			[in] BSTR strFilename,
+			[retval][out] IDispatch** ppUnk);
+		[id(0x60020006), propget]
+		HRESULT FilterCollection([out, retval] IDispatch** ppUnk);
+		[id(0x60020007), propget]
+		HRESULT RegFilterCollection([out, retval] IDispatch** ppUnk);
+		[id(0x60020008)]
+		HRESULT StopWhenReady();
+	};
+
+	[
+		odl,
+		uuid(56A868B6-0AD4-11CE-B03A-0020AF0BA770),
+		helpstring("IMediaEvent interface"),
+		dual,
+		oleautomation
+	]
+	interface IMediaEvent : IDispatch {
+		[id(0x60020000)]
+		HRESULT GetEventHandle([out] LONG_PTR* hEvent);
+		[id(0x60020001)]
+		long GetEvent(
+			[out] long* lEventCode,
+			[out] LONG_PTR* lParam1,
+			[out] LONG_PTR* lParam2,
+			[in][optional] long msTimeout);
+		[id(0x60020002)]
+		long WaitForCompletion(
+			[in] long msTimeout,
+			[out] long* pEvCode);
+		[id(0x60020003)]
+		HRESULT CancelDefaultHandling([in] long lEvCode);
+		[id(0x60020004)]
+		HRESULT RestoreDefaultHandling([in] long lEvCode);
+		[id(0x60020005)]
+		HRESULT FreeEventParams(
+			[in] long lEvCode,
+			[in] LONG_PTR lParam1,
+			[in] LONG_PTR lParam2);
+	};
+
+	[
+		odl,
+		uuid(56A868C0-0AD4-11CE-B03A-0020AF0BA770),
+		helpstring("IMediaEventEx interface")
+	]
+	interface IMediaEventEx : IMediaEvent {
+		HRESULT _stdcall SetNotifyWindow(
+			[in] LONG_PTR hwnd,
+			[in] long lMsg,
+			[in] LONG_PTR lInstanceData);
+		HRESULT _stdcall SetNotifyFlags([in] long lNoNotifyFlags);
+		HRESULT _stdcall GetNotifyFlags([out] long* lplNoNotifyFlags);
+	};
+
+	[
+		odl,
+		uuid(56A868B2-0AD4-11CE-B03A-0020AF0BA770),
+		helpstring("IMediaPosition interface"),
+		dual,
+		oleautomation
+	]
+	interface IMediaPosition : IDispatch {
+		[id(0x60020000), propget]
+		HRESULT Duration([out, retval] double* plength);
+		[id(0x60020001), propput]
+		HRESULT CurrentPosition([in] double pllTime);
+		[id(0x60020001), propget]
+		HRESULT CurrentPosition([out, retval] double* pllTime);
+		[id(0x60020003), propget]
+		HRESULT StopTime([out, retval] double* pllTime);
+		[id(0x60020003), propput]
+		HRESULT StopTime([in] double pllTime);
+		[id(0x60020005), propget]
+		HRESULT PrerollTime([out, retval] double* pllTime);
+		[id(0x60020005), propput]
+		HRESULT PrerollTime([in] double pllTime);
+		[id(0x60020007), propput]
+		HRESULT Rate([in] double pdRate);
+		[id(0x60020007), propget]
+		HRESULT Rate([out, retval] double* pdRate);
+		[id(0x60020009)]
+		HRESULT CanSeekForward([out, retval] long* pCanSeekForward);
+		[id(0x6002000a)]
+		HRESULT CanSeekBackward([out, retval] long* pCanSeekBackward);
+	};
+
+	[
+		odl,
+		uuid(56A868B3-0AD4-11CE-B03A-0020AF0BA770),
+		helpstring("IBasicAudio interface"),
+		dual,
+		oleautomation
+	]
+	interface IBasicAudio : IDispatch {
+		[id(0x60020000), propput]
+		HRESULT Volume([in] DS_VOLUME plVolume);
+		[id(0x60020000), propget]
+		HRESULT Volume([out, retval] DS_VOLUME* plVolume);
+		[id(0x60020002), propput]
+		HRESULT Balance([in] DS_PAN plBalance);
+		[id(0x60020002), propget]
+		HRESULT Balance([out, retval] DS_PAN* plBalance);
+	};
+
+	[
+		odl,
+		uuid(56A868B4-0AD4-11CE-B03A-0020AF0BA770),
+		helpstring("IVideoWindow interface"),
+		dual,
+		oleautomation
+	]
+	interface IVideoWindow : IDispatch {
+		[id(0x60020000), propput]
+		HRESULT Caption([in] BSTR strCaption);
+		[id(0x60020000), propget]
+		HRESULT Caption([out, retval] BSTR* strCaption);
+		[id(0x60020002), propput]
+		HRESULT WindowStyle([in] long WindowStyle);
+		[id(0x60020002), propget]
+		HRESULT WindowStyle([out, retval] long* WindowStyle);
+		[id(0x60020004), propput]
+		HRESULT WindowStyleEx([in] long WindowStyleEx);
+		[id(0x60020004), propget]
+		HRESULT WindowStyleEx([out, retval] long* WindowStyleEx);
+		[id(0x60020006), propput]
+		HRESULT AutoShow([in] long AutoShow);
+		[id(0x60020006), propget]
+		HRESULT AutoShow([out, retval] long* AutoShow);
+		[id(0x60020008), propput]
+		HRESULT WindowState([in] long WindowState);
+		[id(0x60020008), propget]
+		HRESULT WindowState([out, retval] long* WindowState);
+		[id(0x6002000a), propput]
+		HRESULT BackgroundPalette([in] long pBackgroundPalette);
+		[id(0x6002000a), propget]
+		HRESULT BackgroundPalette([out, retval] long* pBackgroundPalette);
+		[id(0x6002000c), propput]
+		HRESULT Visible([in] long pVisible);
+		[id(0x6002000c), propget]
+		HRESULT Visible([out, retval] long* pVisible);
+		[id(0x6002000e), propput]
+		HRESULT Left([in] long pLeft);
+		[id(0x6002000e), propget]
+		HRESULT Left([out, retval] long* pLeft);
+		[id(0x60020010), propput]
+		HRESULT Width([in] long pWidth);
+		[id(0x60020010), propget]
+		HRESULT Width([out, retval] long* pWidth);
+		[id(0x60020012), propput]
+		HRESULT Top([in] long pTop);
+		[id(0x60020012), propget]
+		HRESULT Top([out, retval] long* pTop);
+		[id(0x60020014), propput]
+		HRESULT Height([in] long pHeight);
+		[id(0x60020014), propget]
+		HRESULT Height([out, retval] long* pHeight);
+		[id(0x60020016), propput]
+		HRESULT Owner([in] LONG_PTR Owner);
+		[id(0x60020016), propget]
+		HRESULT Owner([out, retval] LONG_PTR* Owner);
+		[id(0x60020018), propput]
+		HRESULT MessageDrain([in] LONG_PTR Drain);
+		[id(0x60020018), propget]
+		HRESULT MessageDrain([out, retval] LONG_PTR* Drain);
+		[id(0x6002001a), propget]
+		HRESULT BorderColor([out, retval] long* Color);
+		[id(0x6002001a), propput]
+		HRESULT BorderColor([in] long Color);
+		[id(0x6002001c), propget]
+		HRESULT FullScreenMode([out, retval] long* FullScreenMode);
+		[id(0x6002001c), propput]
+		HRESULT FullScreenMode([in] long FullScreenMode);
+		[id(0x6002001e)]
+		HRESULT SetWindowForeground([in] long Focus);
+		[id(0x6002001f)]
+		HRESULT NotifyOwnerMessage(
+			[in] LONG_PTR hwnd,
+			[in] long uMsg,
+			[in] LONG_PTR wParam,
+			[in] LONG_PTR lParam);
+		[id(0x60020020)]
+		HRESULT SetWindowPosition(
+			[in] long Left,
+			[in] long Top,
+			[in] long Width,
+			[in] long Height);
+		[id(0x60020021)]
+		HRESULT GetWindowPosition(
+			[out] long* pLeft,
+			[out] long* pTop,
+			[out] long* pWidth,
+			[out] long* pHeight);
+		[id(0x60020022)]
+		HRESULT GetMinIdealImageSize(
+			[out] long* pWidth,
+			[out] long* pHeight);
+		[id(0x60020023)]
+		HRESULT GetMaxIdealImageSize(
+			[out] long* pWidth,
+			[out] long* pHeight);
+		[id(0x60020024)]
+		HRESULT GetRestorePosition(
+			[out] long* pLeft,
+			[out] long* pTop,
+			[out] long* pWidth,
+			[out] long* pHeight);
+		[id(0x60020025)]
+		HRESULT HideCursor([in] long HideCursor);
+		[id(0x60020026)]
+		HRESULT IsCursorHidden([out] long* CursorHidden);
+	};
+
+	[
+		odl,
+		uuid(56A868B5-0AD4-11CE-B03A-0020AF0BA770),
+		helpstring("IBasicVideo interface"),
+		dual,
+		oleautomation
+	]
+	interface IBasicVideo : IDispatch {
+		[id(0x60020000), propget]
+		HRESULT AvgTimePerFrame([out, retval] double* pAvgTimePerFrame);
+		[id(0x60020001), propget]
+		HRESULT BitRate([out, retval] long* pBitRate);
+		[id(0x60020002), propget]
+		HRESULT BitErrorRate([out, retval] long* pBitErrorRate);
+		[id(0x60020003), propget]
+		HRESULT VideoWidth([out, retval] long* pVideoWidth);
+		[id(0x60020004), propget]
+		HRESULT VideoHeight([out, retval] long* pVideoHeight);
+		[id(0x60020005), propput]
+		HRESULT SourceLeft([in] long pSourceLeft);
+		[id(0x60020005), propget]
+		HRESULT SourceLeft([out, retval] long* pSourceLeft);
+		[id(0x60020007), propput]
+		HRESULT SourceWidth([in] long pSourceWidth);
+		[id(0x60020007), propget]
+		HRESULT SourceWidth([out, retval] long* pSourceWidth);
+		[id(0x60020009), propput]
+		HRESULT SourceTop([in] long pSourceTop);
+		[id(0x60020009), propget]
+		HRESULT SourceTop([out, retval] long* pSourceTop);
+		[id(0x6002000b), propput]
+		HRESULT SourceHeight([in] long pSourceHeight);
+		[id(0x6002000b), propget]
+		HRESULT SourceHeight([out, retval] long* pSourceHeight);
+		[id(0x6002000d), propput]
+		HRESULT DestinationLeft([in] long pDestinationLeft);
+		[id(0x6002000d), propget]
+		HRESULT DestinationLeft([out, retval] long* pDestinationLeft);
+		[id(0x6002000f), propput]
+		HRESULT DestinationWidth([in] long pDestinationWidth);
+		[id(0x6002000f), propget]
+		HRESULT DestinationWidth([out, retval] long* pDestinationWidth);
+		[id(0x60020011), propput]
+		HRESULT DestinationTop([in] long pDestinationTop);
+		[id(0x60020011), propget]
+		HRESULT DestinationTop([out, retval] long* pDestinationTop);
+		[id(0x60020013), propput]
+		HRESULT DestinationHeight([in] long pDestinationHeight);
+		[id(0x60020013), propget]
+		HRESULT DestinationHeight([out, retval] long* pDestinationHeight);
+		[id(0x60020015)]
+		HRESULT SetSourcePosition(
+			[in] long Left,
+			[in] long Top,
+			[in] long Width,
+			[in] long Height);
+		[id(0x60020016)]
+		HRESULT GetSourcePosition(
+			[out] long* pLeft,
+			[out] long* pTop,
+			[out] long* pWidth,
+			[out] long* pHeight);
+		[id(0x60020017)]
+		HRESULT SetDefaultSourcePosition();
+		[id(0x60020018)]
+		HRESULT SetDestinationPosition(
+			[in] long Left,
+			[in] long Top,
+			[in] long Width,
+			[in] long Height);
+		[id(0x60020019)]
+		HRESULT GetDestinationPosition(
+			[out] long* pLeft,
+			[out] long* pTop,
+			[out] long* pWidth,
+			[out] long* pHeight);
+		[id(0x6002001a)]
+		HRESULT SetDefaultDestinationPosition();
+		[id(0x6002001b)]
+		HRESULT GetVideoSize(
+			[out] long* pWidth,
+			[out] long* pHeight);
+		[id(0x6002001c)]
+		HRESULT GetVideoPaletteEntries(
+			[in] long StartIndex,
+			[in] long Entries,
+			[out] long* pRetrieved,
+			[out] long* pPalette);
+		[id(0x6002001d)]
+		HRESULT GetCurrentImage(
+			[in, out] long* pBufferSize,
+			[out] long* pDIBImage);
+		[id(0x6002001e)]
+		HRESULT IsUsingDefaultSource();
+		[id(0x6002001f)]
+		HRESULT IsUsingDefaultDestination();
+	};
+
+	[
+		odl,
+		uuid(329BB360-F6EA-11D1-9038-00A0C9697298),
+		helpstring("IBasicVideo2")
+	]
+	interface IBasicVideo2 : IBasicVideo {
+		HRESULT _stdcall GetPreferredAspectRatio(
+			[out] long* plAspectX,
+			[out] long* plAspectY);
+	};
+
+	[
+		odl,
+		uuid(56A868B8-0AD4-11CE-B03A-0020AF0BA770),
+		helpstring("IDeferredCommand")
+	]
+	interface IDeferredCommand : IUnknown {
+		HRESULT _stdcall Cancel();
+		HRESULT _stdcall Confidence([out] long* pConfidence);
+		HRESULT _stdcall Postpone([in] double newtime);
+		HRESULT _stdcall GetHResult([out] HRESULT* phrResult);
+	};
+
+	[
+		odl,
+		uuid(56A868B7-0AD4-11CE-B03A-0020AF0BA770),
+		helpstring("IQueueCommand")
+	]
+	interface IQueueCommand : IUnknown {
+		HRESULT _stdcall InvokeAtStreamTime(
+			[out] IDeferredCommand** pCmd,
+			[in] double time,
+			[in] GUID* iid,
+			[in] long dispidMethod,
+			[in] short wFlags,
+			[in] long cArgs,
+			[in] VARIANT* pDispParams,
+			[in, out] VARIANT* pvarResult,
+			[out] short* puArgErr);
+		HRESULT _stdcall InvokeAtPresentationTime(
+			[out] IDeferredCommand** pCmd,
+			[in] double time,
+			[in] GUID* iid,
+			[in] long dispidMethod,
+			[in] short wFlags,
+			[in] long cArgs,
+			[in] VARIANT* pDispParams,
+			[in, out] VARIANT* pvarResult,
+			[out] short* puArgErr);
+	};
+
+	[
+		odl,
+		uuid(56A868BA-0AD4-11CE-B03A-0020AF0BA770),
+		helpstring("FilterInfo"),
+		dual,
+		oleautomation
+	]
+	interface IFilterInfo : IDispatch {
+		[id(0x60020000)]
+		HRESULT FindPin(
+			[in] BSTR strPinID,
+			[out] IDispatch** ppUnk);
+		[id(0x60020001), propget]
+		HRESULT Name([out, retval] BSTR* strName);
+		[id(0x60020002), propget]
+		HRESULT VendorInfo([out, retval] BSTR* strVendorInfo);
+		[id(0x60020003), propget]
+		HRESULT Filter([out, retval] IUnknown** ppUnk);
+		[id(0x60020004), propget]
+		HRESULT Pins([out, retval] IDispatch** ppUnk);
+		[id(0x60020005), propget]
+		HRESULT IsFileSource([out, retval] long* pbIsSource);
+		[id(0x60020006), propget]
+		HRESULT Filename([out, retval] BSTR* pstrFilename);
+		[id(0x60020006), propput]
+		HRESULT Filename([in] BSTR pstrFilename);
+	};
+
+	[
+		odl,
+		uuid(56A868BB-0AD4-11CE-B03A-0020AF0BA770),
+		helpstring("Registry Filter Info"),
+		dual,
+		oleautomation
+	]
+	interface IRegFilterInfo : IDispatch {
+		[id(0x60020000), propget]
+		HRESULT Name([out, retval] BSTR* strName);
+		[id(0x60020001)]
+		HRESULT Filter([out] IDispatch** ppUnk);
+	};
+
+	[
+		odl,
+		uuid(56A868BC-0AD4-11CE-B03A-0020AF0BA770),
+		helpstring("Media Type"),
+		dual,
+		oleautomation
+	]
+	interface IMediaTypeInfo : IDispatch {
+		[id(0x60020000), propget]
+		HRESULT Type([out, retval] BSTR* strType);
+		[id(0x60020001), propget]
+		HRESULT Subtype([out, retval] BSTR* strType);
+	};
+
+	[
+		odl,
+		uuid(56A868BD-0AD4-11CE-B03A-0020AF0BA770),
+		helpstring("Pin Info"),
+		dual,
+		oleautomation
+	]
+	interface IPinInfo : IDispatch {
+		[id(0x60020000), propget]
+		HRESULT Pin([out, retval] IUnknown** ppUnk);
+		[id(0x60020001), propget]
+		HRESULT ConnectedTo([out, retval] IDispatch** ppUnk);
+		[id(0x60020002), propget]
+		HRESULT ConnectionMediaType([out, retval] IDispatch** ppUnk);
+		[id(0x60020003), propget]
+		HRESULT FilterInfo([out, retval] IDispatch** ppUnk);
+		[id(0x60020004), propget]
+		HRESULT Name([out, retval] BSTR* ppUnk);
+		[id(0x60020005), propget]
+		HRESULT Direction([out, retval] long* ppDirection);
+		[id(0x60020006), propget]
+		HRESULT PinID([out, retval] BSTR* strPinID);
+		[id(0x60020007), propget]
+		HRESULT MediaTypes([out, retval] IDispatch** ppUnk);
+		[id(0x60020008)]
+		HRESULT Connect([in] IUnknown* pPin);
+		[id(0x60020009)]
+		HRESULT ConnectDirect([in] IUnknown* pPin);
+		[id(0x6002000a)]
+		HRESULT ConnectWithType(
+			[in] IUnknown* pPin,
+			[in] IDispatch* pMediaType);
+		[id(0x6002000b)]
+		HRESULT Disconnect();
+		[id(0x6002000c)]
+		HRESULT Render();
+	};
+
+	[
+		odl,
+		uuid(BC9BCF80-DCD2-11D2-ABF6-00A0C905F375),
+		helpstring("Statistics"),
+		dual,
+		oleautomation
+	]
+	interface IAMStats : IDispatch {
+		[id(0x60020000)]
+		HRESULT Reset();
+		[id(0x60020001), propget]
+		HRESULT Count([out, retval] long* plCount);
+		[id(0x60020002)]
+		HRESULT GetValueByIndex(
+			[in] long lIndex,
+			[out] BSTR* szName,
+			[out] long* lCount,
+			[out] double* dLast,
+			[out] double* dAverage,
+			[out] double* dStdDev,
+			[out] double* dMin,
+			[out] double* dMax);
+		[id(0x60020003)]
+		HRESULT GetValueByName(
+			[in] BSTR szName,
+			[out] long* lIndex,
+			[out] long* lCount,
+			[out] double* dLast,
+			[out] double* dAverage,
+			[out] double* dStdDev,
+			[out] double* dMin,
+			[out] double* dMax);
+		[id(0x60020004)]
+		HRESULT GetIndex(
+			[in] BSTR szName,
+			[in] long lCreate,
+			[out] long* plIndex);
+		[id(0x60020005)]
+		HRESULT AddValue(
+			[in] long lIndex,
+			[in] double dValue);
+	};
+
+	[uuid("56A86897-0AD4-11CE-B03A-0020AF0BA770")]
+	interface IReferenceClock : IUnknown
+	{
+		[propget] HRESULT GetTime(
+			[retval][out] REFERENCE_TIME *pTime);
+
+		[propget] HRESULT AdviseTime(
+			[in] REFERENCE_TIME baseTime,
+			[in] REFERENCE_TIME streamTime,
+			[in] HEVENT hEvent,
+			[retval][out] LONG_PTR *pdwAdviseCookie);
+
+		[propget] HRESULT AdvisePeriodic(
+			[in] REFERENCE_TIME startTime,
+			[in] REFERENCE_TIME periodTime,
+			[in] HSEMAPHORE hSemaphore,
+			[retval][out] LONG_PTR *pdwAdviseCookie);
+
+		HRESULT Unadvise(
+			[in] LONG_PTR dwAdviseCookie);
+	};
+
+	//[uuid("36B73885-C2C8-11CF-8B46-00805F6CEF60")]
+	//interface IReferenceClock2 : IReferenceClock
+	//{
+	//};
+
+	[uuid("56A86891-0AD4-11CE-B03A-0020AF0BA770")]
+	interface IPin : IUnknown
+	{
+		HRESULT Connect(
+			[in] IPin *pReceivePin,
+			[optional][in] const LONG_PTR pmt);
+
+		HRESULT ReceiveConnection(
+			[in] IPin *pConnector,
+			[in] const LONG_PTR pmt);
+
+		HRESULT Disconnect(void);
+
+		[propget] HRESULT ConnectedTo(
+			[retval][out] IPin **pPin);
+
+		HRESULT ConnectionMediaType(
+			/* [annotation][out] */
+			LONG_PTR pmt);
+
+		[propget] HRESULT QueryPinInfo(
+			[retval][out] PIN_INFO *pInfo);
+
+		[propget] HRESULT QueryDirection(
+			[retval][out] PIN_DIRECTION *pPinDir);
+
+		[propget] HRESULT QueryId(
+			[retval][out] LPWSTR *Id);
+
+		HRESULT QueryAccept(
+			[in] const LONG_PTR pmt);
+
+		[propget] HRESULT EnumMediaTypes(
+			[retval][out] IUnknown **ppEnum);
+
+		HRESULT QueryInternalConnections(
+			/* [annotation] */[out] IPin **apPin,
+			[out][in]  long *nPin);
+
+		HRESULT EndOfStream(void);
+
+		HRESULT BeginFlush(void);
+
+		HRESULT EndFlush(void);
+
+		HRESULT NewSegment(
+			[in] REFERENCE_TIME tStart,
+			[in] REFERENCE_TIME tStop,
+			[in] double dRate);
+	};
+
+	[uuid("56A86892-0AD4-11CE-B03A-0020AF0BA770")]
+	interface IEnumPins : IUnknown
+	{
+		HRESULT Next(
+			[in] long cFilters,
+			/* [annotation] */[size_is(cFilters)][out] IPin **ppPins,
+			[retval][out] long *pcFetched);
+
+		HRESULT Skip(
+			[in] long cFilters);
+
+		HRESULT Reset(void);
+
+		[propget] HRESULT Clone(
+			[retval][out] IEnumPins **ppEnum);
+	};
+
+	[uuid("56A86899-0AD4-11CE-B03A-0020AF0BA770")]
+	interface IMediaFilter : IUnknown
+	{
+		[restricted][hidden] HRESULT GetClassID([out] void *pClassID);
+
+		HRESULT Stop(void);
+
+		HRESULT Pause(void);
+
+		HRESULT Run(
+			[in] REFERENCE_TIME tStart);
+
+		[propget] HRESULT GetState(
+			[optional][in] long dwMilliSecsTimeout,
+			[retval][out] FILTER_STATE *State);
+
+		[propputref] HRESULT SyncSource(
+			[in]/*[optional]*/ IReferenceClock *pClock);
+
+		[propget] HRESULT SyncSource(
+			[retval][out] IReferenceClock **pClock);
+	};
+
+	[uuid("56A86895-0AD4-11CE-B03A-0020AF0BA770")]
+	interface IBaseFilter : IMediaFilter
+	{
+		[propget] HRESULT EnumPins(
+			[retval][out] IEnumPins **ppEnum);
+
+		[propget] HRESULT FindPin(
+			[string][in]  LPCWSTR Id,
+			[retval][out] IPin **ppPin);
+
+		[propget] HRESULT QueryFilterInfo(
+			[retval][out] FILTER_INFO *pInfo);
+
+		HRESULT JoinFilterGraph(
+			[optional][in] IFilterGraph *pGraph,
+			[optional][string][in] BSTR pName);
+
+		[propget] HRESULT QueryVendorInfo(
+			[retval][string][out] LPWSTR *pVendorInfo);
+	};
+
+	[uuid("56A86893-0AD4-11CE-B03A-0020AF0BA770")]
+	interface IEnumFilters : IUnknown
+	{
+		HRESULT Next(
+			[in] long cFilters,
+			/* [annotation] */ [out] IBaseFilter **ppFilter,
+			[retval][out] long *pcFetched);
+
+		HRESULT Skip(
+			[in] long cFilters);
+
+		HRESULT Reset(void);
+
+		[propget] HRESULT Clone(
+			[retval][out] IEnumFilters **ppEnum);
+	};
+
+	[uuid("56A8689F-0AD4-11CE-B03A-0020AF0BA770")]
+	interface IFilterGraph : IUnknown
+	{
+		HRESULT AddFilter(
+			[in] IBaseFilter *pFilter,
+			[string][in][optional] BSTR pName);
+
+		HRESULT RemoveFilter(
+			[in] IBaseFilter *pFilter);
+
+		[propget] HRESULT EnumFilters(
+			[retval][out] IEnumFilters **ppEnum);
+
+		[propget] HRESULT FindFilterByName(
+			[string][in] LPCWSTR pName,
+			[retval][out] IBaseFilter **ppFilter);
+
+		HRESULT ConnectDirect(
+			[in] IPin *ppinOut,
+			[in] IPin *ppinIn,
+			[optional]/*[unique]*/[in] const LONG_PTR pmt);
+
+		HRESULT Reconnect(
+			[in] IPin *ppin);
+
+		HRESULT Disconnect(
+			[in] IPin *ppin);
+
+		HRESULT SetDefaultSyncSource(void);
+	};
+
+	[uuid("56A868A9-0AD4-11CE-B03A-0020AF0BA770")]
+	interface IGraphBuilder : IFilterGraph
+	{
+		HRESULT Connect(
+			[in] IPin *ppinOut,
+			[in] IPin *ppinIn);
+
+		HRESULT Render(
+			[in] IPin *ppinOut);
+
+		HRESULT RenderFile(
+			[in] LPCWSTR lpcwstrFile,
+			[optional][unique][in] BSTR lpcwstrPlayList);
+
+		HRESULT AddSourceFilter(
+			[in] LPCWSTR lpcwstrFileName,
+			[optional][unique][in] BSTR lpcwstrFilterName,
+			[retval][out] IBaseFilter **ppFilter);
+
+		HRESULT SetLogFile(
+			[in] LONG_PTR hFile);
+
+		HRESULT Abort(void);
+
+		HRESULT ShouldOperationContinue(void);
+	};
+
+	[uuid("d616f352-d622-11ce-aac5-0020af0b99a3")]
+	interface IDirectSoundFXGargle : IUnknown
+	{
+		[propput] HRESULT AllParameters     ([in] const DSFXGargle* pcDsFxGargle);
+		[propget] HRESULT AllParameters     ([retval][out] DSFXGargle* pDsFxGargle);
+	};
+
+	[uuid("880842e3-145f-43e6-a934-a71806e50547")]
+	interface IDirectSoundFXChorus : IUnknown
+	{
+		[propput] HRESULT AllParameters     ([in] const DSFXChorus* pcDsFxChorus);
+		[propget] HRESULT AllParameters     ([retval][out] DSFXChorus* pDsFxChorus);
+	};
+
+	[uuid("903e9878-2c92-4072-9b2c-ea68f5396783")]
+	interface IDirectSoundFXFlanger : IUnknown
+	{
+		[propput] HRESULT AllParameters     ([in] const DSFXFlanger* pcDsFxFlanger);
+		[propget] HRESULT AllParameters     ([retval][out] DSFXFlanger* pDsFxFlanger);
+	};
+
+	[uuid("8bd28edf-50db-4e92-a2bd-445488d1ed42")]
+	interface IDirectSoundFXEcho : IUnknown
+	{
+		[propput] HRESULT AllParameters     ([in] const DSFXEcho* pcDsFxEcho);
+		[propget] HRESULT AllParameters     ([retval][out] DSFXEcho* pDsFxEcho);
+	};
+
+	[uuid("8ecf4326-455f-4d8b-bda9-8d5d3e9e3e0b")]
+	interface IDirectSoundFXDistortion : IUnknown
+	{
+		[propput] HRESULT AllParameters     ([in] const DSFXDistortion* pcDsFxDistortion);
+		[propget] HRESULT AllParameters     ([retval][out] DSFXDistortion* pDsFxDistortion);
+	};
+
+	[uuid("4bbd1154-62f6-4e2c-a15c-d3b6c417f7a0")]
+	interface IDirectSoundFXCompressor : IUnknown
+	{
+		[propput] HRESULT AllParameters     ([in] const DSFXCompressor* pcDsFxCompressor);
+		[propget] HRESULT AllParameters     ([retval][out] DSFXCompressor* pDsFxCompressor);
+	};
+
+	[uuid("c03ca9fe-fe90-4204-8078-82334cd177da")]
+	interface IDirectSoundFXParamEq : IUnknown
+	{
+		[propput] HRESULT AllParameters     ([in] const DSFXParamEq* pcDsFxParamEq);
+		[propget] HRESULT AllParameters     ([retval][out] DSFXParamEq* pDsFxParamEq);
+	};
+
+	[uuid("4b166a6a-0d66-43f3-80e3-ee6280dee1a4")]
+	interface IDirectSoundFXI3DL2Reverb : IUnknown
+	{
+		[propput] HRESULT AllParameters     ([in] const DSFXI3DL2Reverb* pcDsFxI3DL2Reverb);
+		[propget] HRESULT AllParameters     ([retval][out] DSFXI3DL2Reverb* pDsFxI3DL2Reverb);
+		[propput] HRESULT Preset            (DSFX_I3DL2_ENVIRONMENT_PRESET dwPreset);
+		[propget] HRESULT Preset            ([retval][out] DSFX_I3DL2_ENVIRONMENT_PRESET* pdwPreset);
+		[propput] HRESULT Quality           (DSFX_I3DL2REVERB_QUALITY lQuality);
+		[propget] HRESULT Quality           ([retval][out] DSFX_I3DL2REVERB_QUALITY *plQuality);
+	};
+
+	[uuid("46858c3a-0dc6-45e3-b760-d4eef16cb325")]
+	interface IDirectSoundFXWavesReverb : IUnknown
+	{
+		[propput] HRESULT AllParameters     ([in] const DSFXWavesReverb* pcDsFxWavesReverb);
+		[propget] HRESULT AllParameters     ([retval][out] DSFXWavesReverb* pDsFxWavesReverb);
+	};
+
+	[uuid("ad74143d-903d-4ab7-8066-28d363036d65")]
+	interface IDirectSoundCaptureFXAec : IUnknown
+	{
+		[propput] HRESULT AllParameters     ([in] const DSCFXAec* pDscFxAec);
+		[propget] HRESULT AllParameters     ([retval][out] DSCFXAec* pDscFxAec);
+		[propget] HRESULT Status            ([retval][out] DSCFX_AEC_STATUS* pdwStatus);
+		HRESULT Reset                (void);
+	};
+
+	[uuid("ed311e41-fbae-4175-9625-cd0854f693ca")]
+	interface IDirectSoundCaptureFXNoiseSuppress : IUnknown
+	{
+		[propput] HRESULT AllParameters     ([in] const DSCFXNoiseSuppress* pcDscFxNoiseSuppress);
+		[propget] HRESULT AllParameters     ([retval][out] DSCFXNoiseSuppress* pDscFxNoiseSuppress);
+		HRESULT Reset                (void);
+	};
+
+	[uuid("279AFA84-4981-11CE-A521-0020AF0BE560")]
+	interface IDirectSound3DListener : IUnknown
+	{
+		[propget] HRESULT GetAllParameters         ([retval][out] DS3DLISTENER *pListener);
+		[propget] HRESULT GetDistanceFactor        ([retval][out] float* pflDistanceFactor);
+		[propget] HRESULT GetDopplerFactor         ([retval][out] float* pflDopplerFactor);
+		HRESULT GetOrientation           ([out] D3DVECTOR* pvOrientFront, [out] D3DVECTOR* pvOrientTop);
+		[propget] HRESULT GetPosition              ([retval][out] D3DVECTOR* pvPosition);
+		[propget] HRESULT GetRolloffFactor         ([retval][out] float* pflRolloffFactor);
+		[propget] HRESULT GetVelocity              ([retval][out] D3DVECTOR* pvVelocity);
+		HRESULT SetAllParameters         ([in] const DS3DLISTENER *pcListener, [optional][in] DS3D_APPLY dwApply);
+		HRESULT SetDistanceFactor        (float flDistanceFactor, [optional][in] DS3D_APPLY dwApply);
+		HRESULT SetDopplerFactor         (float flDopplerFactor, [optional][in] DS3D_APPLY dwApply);
+		HRESULT SetOrientation           (float xFront, float yFront, float zFront,
+			float xTop, float yTop, float zTop, [optional][in] DS3D_APPLY dwApply);
+		HRESULT SetPosition              (float X, float Y, float Z, [optional][in] DS3D_APPLY dwApply);
+		HRESULT SetRolloffFactor         (float flRolloffFactor, [optional][in] DS3D_APPLY dwApply);
+		HRESULT SetVelocity              (float X, float Y, float Z, [optional][in] DS3D_APPLY dwApply);
+		HRESULT CommitDeferredSettings   (void);
+	};
+
+	[uuid("279AFA86-4981-11CE-A521-0020AF0BE560")]
+	interface IDirectSound3DBuffer : IUnknown
+	{
+		[propget] HRESULT GetAllParameters     ([retval][out] DS3DBUFFER *pDs3dBuffer);
+		HRESULT GetConeAngles        ([out] DS3D_CONEANGLE* pdwInsideConeAngle, [out] DS3D_CONEANGLE* pdwOutsideConeAngle);
+		[propget] HRESULT GetConeOrientation   ([retval][out] D3DVECTOR* pvOrientation);
+		[propget] HRESULT GetConeOutsideVolume ([retval][out] DS3D_CONEANGLE* plConeOutsideVolume);
+		[propget] HRESULT GetMaxDistance       ([retval][out] float* pflMaxDistance);
+		[propget] HRESULT GetMinDistance       ([retval][out] float* pflMinDistance);
+		[propget] HRESULT GetMode              ([retval][out] DS3D_MODE *pdwMode);
+		[propget] HRESULT GetPosition          ([retval][out] D3DVECTOR* pvPosition);
+		[propget] HRESULT GetVelocity          ([retval][out] D3DVECTOR* pvVelocity);
+		HRESULT SetAllParameters     ([in] const DS3DBUFFER *pcDs3dBuffer, [optional][in] DS3D_APPLY dwApply);
+		HRESULT SetConeAngles        (DS3D_CONEANGLE dwInsideConeAngle, DS3D_CONEANGLE dwOutsideConeAngle, [optional][in] DS3D_APPLY dwApply);
+		HRESULT SetConeOrientation   (float x, float y, float z, [optional][in] DS3D_APPLY dwApply);
+		HRESULT SetConeOutsideVolume (LONG lConeOutsideVolume, [optional][in] DS3D_APPLY dwApply);
+		HRESULT SetMaxDistance       (float flMaxDistance, [optional][in] DS3D_APPLY dwApply);
+		HRESULT SetMinDistance       (float flMinDistance, [optional][in] DS3D_APPLY dwApply);
+		HRESULT SetMode              (DS3D_MODE dwMode, [optional][in] DS3D_APPLY dwApply);
+		HRESULT SetPosition          (float X, float Y, float Z, [optional][in] DS3D_APPLY dwApply);
+		HRESULT SetVelocity          (float X, float Y, float Z, [optional][in] DS3D_APPLY dwApply);
+	};
+
+	[uuid("52D6F586-9F0F-4824-8FC8-E32CA04930C2")]
+	interface IDMOWrapperFilter : IUnknown
+	{
+		HRESULT Init(
+			[in] const CLSID* clsidDMO,
+			[in] const CLSID* catDMO) = 0;
+	};
+
+	[uuid("546F4260-D53E-11cf-B3F0-00AA003761C5")]
+	interface IAMDirectSound : IUnknown
+	{
+		[propget] HRESULT GetDirectSoundInterface ([retval][out] IUnknown* *lplpds);
+		[propget] HRESULT GetPrimaryBufferInterface ([retval][out] IUnknown* *lplpdsb);
+		[propget] HRESULT GetSecondaryBufferInterface ([retval][out] IUnknown* *lplpdsb);
+		HRESULT ReleaseDirectSoundInterface ([in] IUnknown* lpds);
+		HRESULT ReleasePrimaryBufferInterface ([in] IUnknown* lpdsb);
+		HRESULT ReleaseSecondaryBufferInterface ([in] IUnknown* lpdsb);
+		HRESULT SetFocusWindow ([in] LONG_PTR hWnd, [in] BOOL_API bMixingOnOrOff);
+		HRESULT GetFocusWindow ([out] LONG_PTR *hWnd, [out] BOOL_API*bMixingOnOrOff);
+	};
+
+	//[uuid(E436EBB3-524F-11CE-9F53-0020AF0BA770)]
+	//[helpstring("Filtergraph type info")]
+	//coclass FilgraphManager {
+	//	[default] interface IUnknown;
+	//	interface IMediaControl;
+	//	interface IMediaEvent;
+	//	interface IMediaPosition;
+	//	interface IBasicAudio;
+	//	interface IBasicVideo;
+	//	interface IVideoWindow;
+	//};
+
+	[uuid("E436EBB3-524F-11CE-9F53-0020AF0BA770")]
+	[helpstring("Creates the Filter Graph Manager on a shared worker thread.")]
+	coclass FilterGraph {
+		[default] interface IFilterGraph;
+		interface IMediaControl;
+		interface IMediaEvent;
+		interface IMediaPosition;
+		interface IBasicAudio;
+		interface IBasicVideo;
+		interface IVideoWindow;
+	};
+
+	[uuid("E436EBB8-524F-11CE-9F53-0020AF0BA770")]
+	[helpstring("Creates the Filter Graph Manager on the application thread.")]
+	coclass FilterGraphNoThread {
+		[default] interface IFilterGraph;
+		interface IMediaControl;
+		interface IMediaEvent;
+		interface IMediaPosition;
+		interface IBasicAudio;
+		interface IBasicVideo;
+		interface IVideoWindow;
+	};
+
+	[uuid("A3ECBC41-581A-4476-B693-A63340462D8B")]
+	[helpstring("Creates the Filter Graph Manager on the a private worker thread.")]
+	coclass FilterGraphPrivateThread {
+		[default] interface IFilterGraph;
+		interface IMediaControl;
+		interface IMediaEvent;
+		interface IMediaPosition;
+		interface IBasicAudio;
+		interface IBasicVideo;
+		interface IVideoWindow;
+	};
+
+	[uuid("E436EBB1-524F-11CE-9F53-0020AF0BA770")]
+	[helpstring("System Reference Clock")]
+	coclass SystemClock {
+		[default] interface IUnknown;
+		interface IReferenceClock;
+		//interface IReferenceClock2;
+	};
+
+	[uuid("e30629d1-27e5-11ce-875d-00608cb78066")]
+	[helpstring("Uses the waveOut* APIs to render waveform audio.")]
+	coclass AudioRender {
+		[default] interface IUnknown;
+		interface IReferenceClock;
+		interface IMediaPosition;
+		interface IMediaFilter;
+		interface IBaseFilter;
+		interface IBasicAudio;
+	};
+
+	[uuid("79376820-07D0-11cf-A24D-0020AFD79767")]
+	[helpstring("Renders audio using the DirectSound API.")]
+	coclass DSoundRender {
+		interface IUnknown;
+		[default] interface IAMDirectSound;
+		interface IReferenceClock;
+		interface IMediaPosition;
+		interface IMediaFilter;
+		interface IBaseFilter;
+		interface IBasicAudio;
+		interface IDirectSound3DListener;
+		interface IDirectSound3DBuffer;
+	};
+
+	[uuid("94297043-bd82-4dfd-b0de-8177739c6d20")]
+	[helpstring("The IDMOWrapperFilter interface enables an application to use a DirectX Media Object (DMO) inside a filter graph.")]
+	coclass DMOWrapperFilter {
+		interface IUnknown;
+		interface IMediaFilter;
+		interface IBaseFilter;
+		[default] interface IDMOWrapperFilter;
+		interface IDirectSoundFXGargle;
+		interface IDirectSoundFXChorus;
+		interface IDirectSoundFXFlanger;
+		interface IDirectSoundFXEcho;
+		interface IDirectSoundFXDistortion;
+		interface IDirectSoundFXCompressor;
+		interface IDirectSoundFXParamEq;
+		interface IDirectSoundFXWavesReverb;
+		interface IDirectSoundFXI3DL2Reverb;
+		interface IDirectSoundCaptureFXAec;
+		interface IDirectSoundCaptureFXNoiseSuppress;
+	};
+
+	[dllname("ole32")]
+	module DMOGUIDs
+	{
+		const BSTR DMOCATEGORY_AUDIO_DECODER = L"{57f2db8b-e6bb-4513-9d43-dcd2a6593125}";
+		const BSTR DMOCATEGORY_AUDIO_ENCODER = L"{33D9A761-90C8-11d0-BD43-00A0C911CE86}";
+		const BSTR DMOCATEGORY_VIDEO_DECODER = L"{4a69b442-28be-4991-969c-b500adf5d8a8}";
+		const BSTR DMOCATEGORY_VIDEO_ENCODER = L"{33D9A760-90C8-11d0-BD43-00A0C911CE86}";
+		const BSTR DMOCATEGORY_AUDIO_EFFECT = L"{f3602b3f-0592-48df-a4cd-674721e7ebeb}";
+		const BSTR DMOCATEGORY_VIDEO_EFFECT = L"{d990ee14-776c-4723-be46-3da2f56f10b9}";
+		const BSTR DMOCATEGORY_AUDIO_CAPTURE_EFFECT = L"{f665aaba-3e09-4920-aa5f-219811148f09}";
+		const BSTR DMOCATEGORY_ACOUSTIC_ECHO_CANCEL = L"{BF963D80-C559-11D0-8A2B-00A0C9255AC1}";
+		const BSTR DMOCATEGORY_AUDIO_NOISE_SUPPRESS = L"{E07F903F-62FD-4e60-8CDD-DEA7236665B5}";
+		const BSTR DMOCATEGORY_AGC = L"{E88C9BA0-C557-11D0-8A2B-00A0C9255AC1}";
+
+		const BSTR GUID_DSFX_STANDARD_GARGLE = L"{DAFD8210-5711-4B91-9FE3-F75B7AE279BF}";
+		const BSTR GUID_DSFX_STANDARD_CHORUS = L"{EFE6629C-81F7-4281-BD91-C9D604A95AF6}";
+		const BSTR GUID_DSFX_STANDARD_FLANGER = L"{EFCA3D92-DFD8-4672-A603-7420894BAD98}";
+		const BSTR GUID_DSFX_STANDARD_ECHO = L"{EF3E932C-D40B-4F51-8CCF-3F98F1B29D5D}";
+		const BSTR GUID_DSFX_STANDARD_DISTORTION = L"{EF114C90-CD1D-484E-96E5-09CFAF912A21}";
+		const BSTR GUID_DSFX_STANDARD_COMPRESSOR = L"{EF011F79-4000-406D-87AF-BFFB3FC39D57}";
+		const BSTR GUID_DSFX_STANDARD_PARAMEQ = L"{120CED89-3BF4-4173-A132-3CB406CF3231}";
+		const BSTR GUID_DSFX_STANDARD_I3DL2REVERB = L"{EF985E71-D5C7-42D4-BA4D-2D073E2E96F4}";
+		const BSTR GUID_DSFX_WAVES_REVERB = L"{87FC0268-9A55-4360-95AA-004A1D9DE26C}";
+		const BSTR GUID_DSCFX_CLASS_AEC = L"{BF963D80-C559-11D0-8A2B-00A0C9255AC1}";
+		const BSTR GUID_DSCFX_MS_AEC = L"{CDEBB919-379A-488a-8765-F53CFD36DE40}";
+		const BSTR GUID_DSCFX_SYSTEM_AEC = L"{1C22C56D-9879-4f5b-A389-27996DDC2810}";
+		const BSTR GUID_DSCFX_CLASS_NS = L"{E07F903F-62FD-4e60-8CDD-DEA7236665B5}";
+		const BSTR GUID_DSCFX_MS_NS = L"{11C5C73B-66E9-4ba1-A0BA-E814C6EED92D}";
+		const BSTR GUID_DSCFX_SYSTEM_NS = L"{5AB0882E-7274-4516-877D-4EEE99BA4FD0}";
+
+		[entry("CLSIDFromString")]
+		HRESULT CLSIDFromString([in] LPCOLESTR ClassID, [retval][out] CLSID* pclsid);
+
+		[entry("CLSIDFromProgID")]
+		HRESULT CLSIDFromProgID([in] LPCOLESTR ProgID, [retval][out] CLSID* pclsid);
+	}
+};
