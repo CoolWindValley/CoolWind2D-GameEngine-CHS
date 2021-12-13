@@ -1,13 +1,12 @@
 Attribute VB_Name = "VBDX9BAS"
 '******************************************************************************************************************
-'   CoolWind2D 引擎完全开源免费，但仅供技术交流，请勿用于任何商业用途
 '
 '   作者名单：
-'           VBDX9BAS.BAS：hhyjq007（百度贴吧 VB吧 http://tieba.baidu.com/f?kw=vb）
+'           VBDX9BAS.BAS：秋枫萧萧（百度贴吧 VB吧 http://tieba.baidu.com/f?kw=vb）
 '           VBDX9TLB.TLB：acme_pjz（VBGOOD论坛 http://www.vbgood.com）
 '
 '   技术支持：
-'           嘿嘿菌 hhyjq007：CoolWind2D原作者，建立引擎框架和实现基础功能
+'           秋枫萧萧：CoolWind2D原作者，建立引擎框架和实现基础功能
 '           YY菌{3EA3E263-6945-4E1F-A573-492FB5A7799E}：修复了大量BUG和增加大量新功能
 '
 '   有任何的意见建议或者疑问可以到百度贴吧VB吧或者VBGOOD论坛发帖讨论，也可以加入CoolWind游戏编程研究会一起讨论
